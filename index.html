@@ -74,7 +74,7 @@
       document.querySelector('.username').innerText = name;
 
       app.container = document.querySelector('.container');
-      app.ws = new WebSocket('ws://localhost:8080/ws?username=' + name);
+      app.ws = new WebSocket('http://43.218.103.225/ws?username=' + name);
 
       app.ws.onopen = function () {
         var message = '<b>me</b>: connected';
