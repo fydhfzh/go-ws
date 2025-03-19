@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/gorilla/websocket"
@@ -35,13 +34,7 @@ var connections = make([]*WebSocketConnection, 0)
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		content, err := os.ReadFile("index.html")
-		if err != nil {
-			http.Error(w, "Could not open requested file", http.StatusInternalServerError)
-			return
-		}
-
-		fmt.Fprintf(w, "%s", content)
+		http.ServeFile(w, r, "index.html")
 	})
 
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
