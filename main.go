@@ -56,7 +56,7 @@ func main() {
 	})
 
 	fmt.Println("Server starting at :8080")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe("0.0.0.0:8080", nil)
 }
 
 func handleIO(currentConn *WebSocketConnection) {
